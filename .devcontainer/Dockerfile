@@ -8,7 +8,7 @@ ENV PYTHONFAULTHANDLER 1
 
 # Install pipenv and compilation dependencies
 RUN pip install pipenv
-RUN apt-get update && apt-get install -y --no-install-recommends gcc graphviz
+RUN apt-get update && apt-get install -y --no-install-recommends git gcc graphviz
 
 # Specific to this notebook
 RUN apt-get install -y wget tcl-dev tk-dev
