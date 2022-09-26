@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-files=$(git diff --cached --name-only --diff-filter=ACMRT) && \
-make fmt && \
-git add $files || exit 1
