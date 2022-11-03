@@ -8,6 +8,9 @@ python_version = "3.10"
 
 [packages]
 sqlalchemy = "*"
+pandas = "*"
+mysql-connector-python = "*"
+python-dotenv = "*"
 
 [dev-packages]
 flake8 = "*"

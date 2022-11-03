@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  notebook:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    # image: python:3.10-slim-buster
+    volumes:
+    - ..:/workspace:cached
+    # depends_on: ["db"]
+    # entrypoint: pipenv install --dev
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+    # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
+    network_mode: service:db
+
+  db:
+    image: mysql:latest
+    # command: --default-authentication-plugin=mysql_native_password
+    # restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PWD}
+    volumes:
+    - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
